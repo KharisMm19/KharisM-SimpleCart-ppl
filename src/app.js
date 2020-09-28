@@ -21,4 +21,22 @@ incrButton.addEventListener('click', () => {
 
 decrButton.addEventListener('click', () => {
   qtyInput.value = decrementQty(qtyInput.value);
+  qtyInput.value = defaultQty(qtyInput.value);
+  subTotal.textContent = `Rp. ` + recalculateSubTotal(price.value, qtyInput.value);
+});
+
+qtyInput.addEventListener('keyup', () => { 
+  subTotal.textContent = `Rp. ` + recalculateSubTotal(price.value, qtyInput.value); 
+});
+
+price.addEventListener('keyup', () => { 
+  subTotal.textContent = `Rp. ` + totalAmount(price.value, qtyInput.value, kodePromo.value); 
+});
+
+kodePromo.addEventListener('keyup', () => { 
+  subTotal.textContent = `Rp. ` + totalAmount(price.value, qtyInput.value, kodePromo.value); 
+});
+
+btnOk.addEventListener('keyup', () => { 
+  subTotal.textContent = `Rp. ` + totalAmount(price.value, qtyInput.value, kodePromo.value);
 });
